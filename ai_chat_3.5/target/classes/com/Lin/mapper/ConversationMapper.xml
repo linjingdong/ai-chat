@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.Lin.mapper.ConversationMapper">
+
+    <!--List<Conversation> queryByConId(String conversationId);-->
+    <select id="queryByConId" resultType="conversation">
+        select * from conversation where conversation_id = #{conversationId}
+    </select>
+
+
+    <!--int insert(Conversation conversation);-->
+    <insert id="insert">
+        insert into conversation (question, answer,conversation_id)
+        values
+            (#{question}, #{answer}, #{conversationId})
+    </insert>
+
+    <!--int deleteByConId(String conversationId);-->
+    <delete id="deleteByConId">
+        delete from conversation where conversation_id = #{conversationId}
+    </delete>
+
+    <select id="getQuestions" resultType="question">
+        select question, conversation_id from conversation
+    </select>
+</mapper>
